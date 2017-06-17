@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.eduard.myapplication.LoginScreen"
+    tools:showIn="@layout/activity_login_screen">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="358dp"
+        android:layout_height="560dp"
+        android:id="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/LoginScreen_h1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:text="Login"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/input_login_email"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:hint="E-Mail"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="170dp" />
+
+        <EditText
+            android:id="@+id/input_login_password"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:inputType="numberPassword"
+            android:hint="Password"
+            android:maxLength="6"
+            app:layout_constraintTop_toBottomOf="@+id/input_login_email" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="339dp"
+        android:text="Login"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/Login_errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="136dp" />
+
+    <ProgressBar
+        android:id="@+id/login_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        android:layout_marginTop="222dp" />
+
+
+</android.support.constraint.ConstraintLayout>
