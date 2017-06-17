@@ -7,6 +7,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 /**
@@ -20,30 +21,37 @@ public class DBDataSource {
     public DBDataSource(Context context) {
 
         dbHelper = new DBConnection(context);
-       // database = dbHelper.getWritableDatabase();
     }
 
     public List<Todo> getAllTodos(){
-
+        List<Todo> resultList = new ArrayList<>();
         try {
             List<String[]> allTodosAsString = dbHelper.getAllToDos();
-            List<Todo> resultList = new ArrayList<>();
+
             for(String[] indexArray : allTodosAsString) {
                 //String name, String description, boolean favourite, Date expire
-                String name = indexArray[1];
-                String description = indexArray[2];
-                boolean favourite = Boolean.parseBoolean(indexArray[3]);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
-                Date expire = sdf.parse(indexArray[4]);
+                String name = indexArray[0];
+                String description = indexArray[1];
+                boolean favourite = Boolean.parseBoolean(indexArray[2]);
+
+                String expire = indexArray[3];
+
+
                 resultList.add(new Todo(name, description, favourite, expire));
             }
-            return resultList;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+        }finally {
+            return resultList;
         }
-
     }
 
+    public void newTodo(Todo newToDo) {
+        dbHelper.newToDo(newToDo);
+    }
+
+    public void deleteAllToDos(){
+        dbHelper.deleteAllToDos();
+    }
 
 }

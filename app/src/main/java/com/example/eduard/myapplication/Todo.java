@@ -10,9 +10,9 @@ public class Todo {
     private String name;
     private String description;
     private boolean favourite;
-    private Date expire;
+    private String expire;
 
-    public Todo(String name, String description, boolean favourite, Date expire) {
+    public Todo(String name, String description, boolean favourite, String expire) {
         this.name = name;
         this.description = description;
         this.favourite = favourite;
@@ -43,11 +43,11 @@ public class Todo {
         this.favourite = favourite;
     }
 
-    public Date getExpire() {
+    public String getExpire() {
         return expire;
     }
 
-    public void setExpire(Date expire) {
+    public void setExpire(String expire) {
         this.expire = expire;
     }
 
