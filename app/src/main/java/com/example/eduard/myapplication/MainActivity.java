@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
          TextView textView = (TextView) findViewById(R.id.FirstTextField);
          dbDataSource.getAllTodos();
-         //textView.setText(dbDataSource.getAllTodos().get(0));
+         textView.setText(dbDataSource.getAllTodos().get(0).toString());
 
     }
 

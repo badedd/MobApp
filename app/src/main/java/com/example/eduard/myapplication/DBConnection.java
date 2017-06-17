@@ -116,17 +116,16 @@ public class DBConnection extends SQLiteOpenHelper {
         return mDataBase != null;
     }
 
-    public List<String> getAllToDos() throws Exception{
-
-        List<Pair<String, String>> liste = mDataBase.getAttachedDbs();
-        mDataBase = this.getWritableDatabase();
-
+    public List<String[]> getAllToDos() throws Exception {
         Cursor cursor = mDataBase.rawQuery("SELECT * FROM todo",null);
-        int columnIndex = cursor.getColumnIndexOrThrow("ID");
-        List<String> resultList = new ArrayList<>();
+        List<String[]> resultList = new ArrayList<>();
        if (cursor.moveToFirst()) {
             do{
-                resultList.add(cursor.getString(columnIndex));
+                String[] array = new String[5];
+                for(int i = 0; i < array.length; i++) {
+                    array[i] = cursor.getString(i);
+                }
+                resultList.add(array);
             }while(cursor.moveToNext());
 
         }

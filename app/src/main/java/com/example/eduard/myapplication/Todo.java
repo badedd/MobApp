@@ -50,4 +50,14 @@ public class Todo {
     public void setExpire(Date expire) {
         this.expire = expire;
     }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", favourite=" + favourite +
+                ", expire=" + expire +
+                '}';
+    }
 }
