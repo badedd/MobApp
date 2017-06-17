@@ -1,5 +1,6 @@
 package com.example.eduard.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
          TextView textView = (TextView) findViewById(R.id.FirstTextField);
          dbDataSource.getAllTodos();
          textView.setText(dbDataSource.getAllTodos().get(0).toString());
-
+         Intent intentToLogIn = new Intent(this, LoginScreen.class);
+        startActivity(intentToLogIn);
     }
 
 }
