@@ -35,9 +35,11 @@ public class DBDataSource {
                 boolean favourite = Boolean.parseBoolean(indexArray[2]);
 
                 String expire = indexArray[3];
+                int dbID = Integer.parseInt(indexArray[4]);
 
 
-                resultList.add(new Todo(name, description, favourite, expire));
+
+                resultList.add(new Todo(name, description, favourite, expire, dbID));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,5 +55,15 @@ public class DBDataSource {
     public void deleteAllToDos(){
         dbHelper.deleteAllToDos();
     }
+
+    public void deleteToDoByID(int toDoId){
+        dbHelper.deleteToDoByID(toDoId);
+    }
+
+    public Todo getToDoByID(int toDoID) {
+        Todo todo = dbHelper.getToDoByID(toDoID);
+        return todo;
+    }
+
 
 }

@@ -105,13 +105,14 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public List<String[]> getAllToDos() throws Exception {
 
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM todo", null);
+        Cursor cursor = mDataBase.rawQuery("SELECT *,rowid FROM todo", null);
         List<String[]> resultList = new ArrayList<>();
         if (cursor.moveToFirst() && !cursor.isLast()) {
             do {
-                String[] array = new String[4];
+                String[] array = new String[5];
                 for (int i = 0; i < array.length; i++) {
                     array[i] = cursor.getString(i);
+                    System.out.println(cursor.getString(i));
                 }
                 resultList.add(array);
             } while (cursor.moveToNext());
@@ -131,10 +132,10 @@ public class DBConnection extends SQLiteOpenHelper {
         return ret;
     }
 
-    public boolean editToDo(Todo editTodo, int toDoId) {
+    public boolean editToDo(Todo editTodo) {
         boolean ret = true;
         try {
-            mDataBase.execSQL("DELETE FROM todo WHERE rowid = " + toDoId + "LIMIT 1");
+            mDataBase.execSQL("DELETE FROM todo WHERE rowid = " + editTodo.get_dbID());
             mDataBase.execSQL("INSERT INTO todo VALUES (" + editTodo.getName() + "," + editTodo.getDescription() + "," + editTodo.isFavourite() + "," + editTodo.getExpire() + ")");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -143,7 +144,7 @@ public class DBConnection extends SQLiteOpenHelper {
         return ret;
     }
 
-    public boolean deleteToDo(int toDoId) {
+    public boolean deleteToDoByID(int toDoId) {
         boolean ret = true;
         try {
             mDataBase.execSQL("DELETE FROM todo WHERE rowid = " + toDoId + "LIMIT 1");
@@ -154,15 +155,36 @@ public class DBConnection extends SQLiteOpenHelper {
         return ret;
     }
 
-    public boolean getToDo(int toDoId) {
+    public boolean deleteToDo(Todo deleteTodo) {
         boolean ret = true;
         try {
-            mDataBase.execSQL("DELETE FROM todo WHERE rowid = " + toDoId + "LIMIT 1");
+            mDataBase.execSQL("DELETE FROM todo WHERE rowid = " + deleteTodo.get_dbID());
         } catch (SQLException e) {
             e.printStackTrace();
             ret = false;
         }
         return ret;
+    }
+
+    public Todo getToDoByID(int toDoId) {
+        Todo todo;
+        todo = null;
+        try {
+            Cursor cursor = mDataBase.rawQuery("SELECT * FROM todo WHERE rowid = ? LIMIT 1", new String[] {Integer.toString(toDoId)});
+            if ( cursor.moveToFirst()) {
+                String name = cursor.getString(cursor.getColumnIndex("Name"));
+                String description= cursor.getString(cursor.getColumnIndex("Description"));
+                boolean favourite = Boolean.parseBoolean(cursor.getString(cursor.getColumnIndex("Favourite")));
+                String expire = cursor.getString(cursor.getColumnIndex("Expire"));
+                todo = new Todo(name,description,favourite,expire,toDoId);
+            }else{
+                System.out.println("ToDo mit der ID nicht vorhanden");
+                todo = new Todo("null","null",false,"0000-00-00 00:00:00",0);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return todo;
     }
 
     public boolean deleteAllToDos() {

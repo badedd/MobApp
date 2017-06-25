@@ -11,12 +11,14 @@ public class Todo {
     private String description;
     private boolean favourite;
     private String expire;
+    private int dbID;
 
-    public Todo(String name, String description, boolean favourite, String expire) {
+    public Todo(String name, String description, boolean favourite, String expire, int dbID) {
         this.name = name;
         this.description = description;
         this.favourite = favourite;
         this.expire = expire;
+        this.dbID = dbID;
     }
 
     public String getName() {
@@ -49,6 +51,13 @@ public class Todo {
 
     public void setExpire(String expire) {
         this.expire = expire;
+    }
+
+    public void set_dbID() {
+        this.dbID = dbID;
+    }
+    public int get_dbID() {
+        return dbID;
     }
 
     @Override

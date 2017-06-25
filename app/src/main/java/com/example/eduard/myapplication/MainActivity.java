@@ -21,35 +21,37 @@ public class MainActivity extends AppCompatActivity {
        // Todo todo = new Todo("Testname1","Testdesc",false,new Date(System.currentTimeMillis()));
 
          dbDataSource = new DBDataSource(this);
-        // dbDataSource.deleteAllToDos();
+         //dbDataSource.deleteToDoByID(1);
+         //dbDataSource.deleteAllToDos();
+
+         //Todo newToDo = new Todo("FickDaFock3","NeueDesc3",false,"2017-06-17 20:40:40",0);
+         //dbDataSource.newTodo(newToDo);
 
          TextView textView = (TextView) findViewById(R.id.FirstTextField);
-
-
          String sammlung = "";
          List<Todo> resultList = new ArrayList<>();
          resultList = dbDataSource.getAllTodos();
 
 
          for (Todo todo:resultList){
-             sammlung+=todo.getName()+"\n";
+             sammlung+=todo.getName()+ " " +todo.getDescription()+ " " + todo.get_dbID()+"\n";
          }
+
+         Todo todo = dbDataSource.getToDoByID(2);
+         sammlung += "per ID: "+todo.getName()+ " " +todo.getDescription()+ " " + todo.get_dbID()+"\n";
 
          //int size = dbDataSource.getAllTodos().size();
 
         textView.setText(sammlung);
 
-        //Todo newToDo = new Todo("NeuerName","NeueDesc",false,"2017-06-17 20:40:40");
-        //dbDataSource.newTodo(newToDo);
          //int size2 = dbDataSource.getAllTodos().size();
          //textView.setText("size1: "+size+", size2: "+size2+", CurrentTime: "+newToDo.getExpire());
 
 
-
-         dbDataSource.getAllTodos();
+/*         dbDataSource.getAllTodos();
          textView.setText(dbDataSource.getAllTodos().get(0).toString());
          Intent intentToLogIn = new Intent(this, LoginScreen.class);
-        startActivity(intentToLogIn);
+         startActivity(intentToLogIn);*/
     }
 
 }
