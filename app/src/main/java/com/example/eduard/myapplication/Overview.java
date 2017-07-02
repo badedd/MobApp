@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +45,14 @@ public class Overview extends AppCompatActivity {
             todoAsString.add(todo.toString());
         }
 
-        ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoAsString);
+        OverviewItemAdapter overviewItemAdapter = new OverviewItemAdapter(this, todoList);
+
+//         ArrayAdapter<String> itemsAdapter =
+//                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoAsString);
+
         ListView overviewListview = (ListView) findViewById(R.id.overview_listview);
-        overviewListview.setAdapter(itemsAdapter);
+        overviewListview.setAdapter(overviewItemAdapter);
+
         final Intent intentToDetail = new Intent(this, detailitem.class);
         overviewListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
