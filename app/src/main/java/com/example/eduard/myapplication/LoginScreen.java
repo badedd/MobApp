@@ -1,6 +1,7 @@
 package com.example.eduard.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -88,6 +89,7 @@ public class LoginScreen extends AppCompatActivity {
                 }
             }
         });
+        final Intent intentToOverview = new Intent(this, Overview.class);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +97,7 @@ public class LoginScreen extends AppCompatActivity {
                 if(errorMessage.getText().equals("")){
                     if(CheckWidgetContent.checkEmail(email.getText().toString()) && CheckWidgetContent.checkPassword(password.getText().toString())) {
                         Toast.makeText(LoginScreen.this, "Login successful " + email.getText() + "; " + password.getText(), Toast.LENGTH_LONG).show();
-                        if(progressBar.getVisibility() == View.INVISIBLE) {
-                            progressBar.setVisibility(View.VISIBLE);
-                        } else {
-                            progressBar.setVisibility(View.INVISIBLE);
-                        }
+                        startActivity(intentToOverview);
                     } else {
                         errorMessage.setText("password is not well formed!");
                     }

@@ -62,11 +62,9 @@ public class Todo {
 
     @Override
     public String toString() {
-        return "Todo{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", favourite=" + favourite +
-                ", expire=" + expire +
-                '}';
+        return  "name=" + name + "\n" +
+                "description=" + description + "\n" +
+                "favourite=" + favourite + "\n" +
+                "expire=" + expire;
     }
 }

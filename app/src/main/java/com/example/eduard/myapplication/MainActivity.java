@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 /*         dbDataSource.getAllTodos();
-         textView.setText(dbDataSource.getAllTodos().get(0).toString());
+         textView.setText(dbDataSource.getAllTodos().get(0).toString());*/
          Intent intentToLogIn = new Intent(this, LoginScreen.class);
-         startActivity(intentToLogIn);*/
+         startActivity(intentToLogIn);
     }
 
 }
