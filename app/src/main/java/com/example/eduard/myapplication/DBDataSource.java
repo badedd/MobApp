@@ -33,13 +33,12 @@ public class DBDataSource {
                 String name = indexArray[0];
                 String description = indexArray[1];
                 boolean favourite = Boolean.parseBoolean(indexArray[2]);
+                boolean done = Boolean.parseBoolean(indexArray[3]);
 
                 String expire = indexArray[3];
                 int dbID = Integer.parseInt(indexArray[4]);
 
-
-
-                resultList.add(new Todo(name, description, favourite, expire, dbID));
+                resultList.add(new Todo(name, description, favourite, done, expire, dbID));
             }
         } catch (Exception e) {
             e.printStackTrace();

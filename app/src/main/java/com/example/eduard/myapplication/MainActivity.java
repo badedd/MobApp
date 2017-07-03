@@ -14,6 +14,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private DBDataSource dbDataSource;
+
+    IDataItemCRUDOperations iDat;
+
+
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
          //dbDataSource.deleteToDoByID(1);
          //dbDataSource.deleteAllToDos();
 
-         //Todo newToDo = new Todo("FickDaFock3","NeueDesc3",false,"2017-06-17 20:40:40",0);
+         //Todo newToDo = new Todo("NeuesTodo","NeueDesc3",false,false,"2017-06-17 20:40:40",0);
          //dbDataSource.newTodo(newToDo);
 
          TextView textView = (TextView) findViewById(R.id.FirstTextField);
@@ -32,26 +36,35 @@ public class MainActivity extends AppCompatActivity {
          List<Todo> resultList = new ArrayList<>();
          resultList = dbDataSource.getAllTodos();
 
-
          for (Todo todo:resultList){
-             sammlung+=todo.getName()+ " " +todo.getDescription()+ " " + todo.get_dbID()+"\n";
+             sammlung+=todo.getName()+ " " +todo.getDescription()+ " " + " " +todo.isDone()+ " "+ todo.get_dbID()+"\n";
          }
 
-         Todo todo = dbDataSource.getToDoByID(2);
-         sammlung += "per ID: "+todo.getName()+ " " +todo.getDescription()+ " " + todo.get_dbID()+"\n";
+        // Todo todo = dbDataSource.getToDoByID(1);
+         // sammlung += "per ID: "+todo.getName()+ " " +todo.getDescription()+ " " + todo.get_dbID()+"\n";
 
          //int size = dbDataSource.getAllTodos().size();
 
-        textView.setText(sammlung);
+         textView.setText(sammlung);
+         HttpClientDataItemCRUDOperationsImpl bla = new HttpClientDataItemCRUDOperationsImpl();
+
+         List<DataItem> resultList2 = bla.readAllDataItems();
+         for (DataItem item:resultList2){
+             System.out.println(item.getName());
+
+         }
+
 
          //int size2 = dbDataSource.getAllTodos().size();
          //textView.setText("size1: "+size+", size2: "+size2+", CurrentTime: "+newToDo.getExpire());
 
 
 /*         dbDataSource.getAllTodos();
-         textView.setText(dbDataSource.getAllTodos().get(0).toString());*/
+         textView.setText(dbDataSource.getAllTodos().get(0).toString());
          Intent intentToLogIn = new Intent(this, LoginScreen.class);
          startActivity(intentToLogIn);
+
+         */
     }
 
 }

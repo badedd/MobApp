@@ -17,10 +17,17 @@ import java.util.List;
 
 /**
  * Created by Eduard on 12.05.2017.
+ *
+ CREATE TABLE todo (
+ Name nvarchar(255) NOT NULL,
+ Description nvarchar(255),
+ Favourite bool NOT NULL,
+ Done bool NOT NULL,
+ Expire time NOT NULL) ;
  */
 
 public class DBConnection extends SQLiteOpenHelper {
-    private static String DB_NAME = "mobappdev1.db";
+    private static String DB_NAME = "mobappdev2.db";
     private static String DB_PATH = "";
     private final Context mContext;
     private SQLiteDatabase mDataBase;
@@ -175,11 +182,12 @@ public class DBConnection extends SQLiteOpenHelper {
                 String name = cursor.getString(cursor.getColumnIndex("Name"));
                 String description= cursor.getString(cursor.getColumnIndex("Description"));
                 boolean favourite = Boolean.parseBoolean(cursor.getString(cursor.getColumnIndex("Favourite")));
+                boolean done = Boolean.parseBoolean(cursor.getString(cursor.getColumnIndex("Done")));
                 String expire = cursor.getString(cursor.getColumnIndex("Expire"));
-                todo = new Todo(name,description,favourite,expire,toDoId);
+                todo = new Todo(name,description,favourite,done,expire,toDoId);
             }else{
                 System.out.println("ToDo mit der ID nicht vorhanden");
-                todo = new Todo("null","null",false,"0000-00-00 00:00:00",0);
+                todo = new Todo("null","null",false,false,"0000-00-00 00:00:00",0);
             }
         } catch (SQLException e) {
             e.printStackTrace();
