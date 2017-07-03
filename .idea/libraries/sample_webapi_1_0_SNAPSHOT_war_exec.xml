@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sample-webapi-1.0-SNAPSHOT-war-exec">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/src/main/sample-webapi-1.0-SNAPSHOT-war-exec.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
