@@ -47,7 +47,7 @@ public class OverviewItemAdapter extends ArrayAdapter<Todo> {
         //Filling textview element with name, expire and favourite from todo
         String germanDate;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
         try {
             Date tempDate = sdf.parse(todo.getExpire());

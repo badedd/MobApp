@@ -8,19 +8,114 @@
     tools:context="com.example.eduard.myapplication.detailitem"
     tools:showIn="@layout/activity_detailitem">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detailansicht"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+    <TableLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp">
 
-    <TextView
-        android:id="@+id/textView2"
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="5dip">
+
+            <TextView
+                android:id="@+id/detail_name"
+                android:textSize="20sp"
+                android:text="Name"/>
+
+            <EditText
+                android:id="@+id/detail_name_edit"
+                android:text="EditName"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="5dip">
+
+            <TextView
+                android:id="@+id/detail_description"
+                android:textSize="20sp"
+                android:layout_width="180dp"
+                android:text="Description"/>
+
+            <EditText
+                android:id="@+id/detail_description_edit"
+                android:layout_width="180dp"
+                android:text="EditDescription"
+                />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="5dip">
+            <TextView
+                android:id="@+id/detail_expiredate"
+                android:textSize="20sp"
+                android:text="ExpireDate"/>
+
+            <EditText
+                android:id="@+id/detail_expiredate_edit"
+                android:text="EditExpireDate"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="5dip">
+            <TextView
+                android:id="@+id/detail_expiretime"
+                android:textSize="20sp"
+                android:text="ExpireTime"/>
+
+            <EditText
+                android:id="@+id/detail_expiretime_edit"
+                android:text="EditExpireTime"
+                />
+
+        </TableRow>
+
+        <TableRow
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="5dip">
+
+            <TextView
+                android:id="@+id/detail_done"
+                android:textSize="20sp"
+                android:text="Done"/>
+
+            <Switch android:id="@+id/detail_done_edit" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="5dip">
+            <TextView
+                android:id="@+id/detail_favourite"
+                android:textSize="20sp"
+                android:text="Favourite"/>
+
+            <TextView
+                android:id="@+id/detail_favourite_edit"
+                android:text="Favourite"
+                />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/detail_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="Delete"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="69dp" />
+        android:layout_marginTop="300dp" />
+
+
 </android.support.constraint.ConstraintLayout>

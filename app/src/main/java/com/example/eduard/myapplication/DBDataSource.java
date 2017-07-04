@@ -65,5 +65,7 @@ public class DBDataSource {
         return todo;
     }
 
-
+    public void editToDo(Todo editTodo) {
+        dbHelper.editToDo(editTodo);
+    }
 }

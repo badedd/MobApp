@@ -197,5 +197,4 @@ public class DBConnection extends SQLiteOpenHelper {
         }
         return ret;
     }
-
 }
